@@ -10,6 +10,7 @@ import * as actions from '../../redux/actions';
 import { Box, Container, Grid, TextField } from '@mui/material';
 
 // Custom components
+import SEO from '../../components/SEO';
 import Toolbox from '../../components/Toolbox';
 import Form from '../../components/Form';
 import InputFieldWithChip from '../../components/TagsInput/InputFieldWithChip';
@@ -98,80 +99,83 @@ const NewCategory = (props) => {
   });
 
   return (
-    <Box
-      component='main'
-      sx={{
-        flexGrow: 1,
-        py: 8,
-      }}
-    >
-      <Container maxWidth='lg'>
-        <Toolbox title='New Category' />
-        <Form
-          title='Creation panel'
-          subheader={`Only the first field is required (fill out subcategories first)`}
-          handleSubmit={formik.handleSubmit}
-          bntDisabled={formik.isSubmitting}
-          btnText='Create Category'
-        >
-          <Grid container spacing={3}>
-            <Grid item md={6} xs={12}>
-              <TextField
-                error={Boolean(
-                  formik.touched.categoryName && formik.errors.categoryName
-                )}
-                fullWidth
-                helpertext={
-                  formik.touched.categoryName && formik.errors.categoryName
-                }
-                label='Category Name'
-                name='categoryName'
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.categoryName}
-                variant='outlined'
-              />
+    <>
+      <SEO title='Teltonika Networks | New Category' />
+      <Box
+        component='main'
+        sx={{
+          flexGrow: 1,
+          py: 8,
+        }}
+      >
+        <Container maxWidth='lg'>
+          <Toolbox title='New Category' />
+          <Form
+            title='Creation panel'
+            subheader={`Only the first field is required (fill out subcategories first)`}
+            handleSubmit={formik.handleSubmit}
+            bntDisabled={formik.isSubmitting}
+            btnText='Create Category'
+          >
+            <Grid container spacing={3}>
+              <Grid item md={6} xs={12}>
+                <TextField
+                  error={Boolean(
+                    formik.touched.categoryName && formik.errors.categoryName
+                  )}
+                  fullWidth
+                  helpertext={
+                    formik.touched.categoryName && formik.errors.categoryName
+                  }
+                  label='Category Name'
+                  name='categoryName'
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.categoryName}
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <InputFieldWithChip
+                  id='subcategories'
+                  name='subcategories'
+                  placeholder='Add subcategories'
+                  label='Subcategories'
+                  setItems={setSubcategories}
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <InputFieldWithChip
+                  id='subsubcategories1'
+                  name='subsubcategories1'
+                  placeholder='Add subsubcategories #1'
+                  label='Subsubcategories #1'
+                  setItems={setSubsubcategories1}
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <InputFieldWithChip
+                  id='subsubcategories2'
+                  name='subsubcategories2'
+                  placeholder='Add subsubcategories #2'
+                  label='Subsubcategories #2'
+                  setItems={setSubsubcategories2}
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <InputFieldWithChip
+                  id='subsubcategories3'
+                  name='subsubcategories3'
+                  placeholder='Add subsubcategories #3'
+                  label='Subsubcategories #3'
+                  setItems={setSubsubcategories3}
+                />
+              </Grid>
             </Grid>
-            <Grid item md={6} xs={12}>
-              <InputFieldWithChip
-                id='subcategories'
-                name='subcategories'
-                placeholder='Add subcategories'
-                label='Subcategories'
-                setItems={setSubcategories}
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <InputFieldWithChip
-                id='subsubcategories1'
-                name='subsubcategories1'
-                placeholder='Add subsubcategories #1'
-                label='Subsubcategories #1'
-                setItems={setSubsubcategories1}
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <InputFieldWithChip
-                id='subsubcategories2'
-                name='subsubcategories2'
-                placeholder='Add subsubcategories #2'
-                label='Subsubcategories #2'
-                setItems={setSubsubcategories2}
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <InputFieldWithChip
-                id='subsubcategories3'
-                name='subsubcategories3'
-                placeholder='Add subsubcategories #3'
-                label='Subsubcategories #3'
-                setItems={setSubsubcategories3}
-              />
-            </Grid>
-          </Grid>
-        </Form>
-      </Container>
-    </Box>
+          </Form>
+        </Container>
+      </Box>
+    </>
   );
 };
 
