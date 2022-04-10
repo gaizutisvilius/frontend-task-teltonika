@@ -12,12 +12,15 @@ import UsersToolboxItems from '../../components/Users/UsersToolboxItems';
 import UsersList from '../../components/Users';
 
 const Users = () => {
-  const data = useSelector((state) => state.data);
+  const users = useSelector((state) => state.data.users);
+  const categories = useSelector((state) => state.data.categories);
+  const foundUsers = useSelector((state) => state.data.foundUsers);
+  const isSearchActive = useSelector((state) => state.data.isSearchActive);
 
-  const currentUsers = data.isSearchActive ? data.foundUsers : data.users;
+  const currentUsers = isSearchActive ? foundUsers : users;
   const exportData = {
     users: currentUsers,
-    categories: data.categories,
+    categories: categories,
   };
 
   return (

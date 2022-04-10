@@ -11,7 +11,8 @@ import MenuNavItem from './MenuNavItem';
 import { convertToSlug } from '../../shared/utils';
 
 const MenuNav = (props) => {
-  const data = useSelector((state) => state.data);
+  const error = useSelector((state) => state.data.error);
+  const categories = useSelector((state) => state.data.categories);
 
   // Set up menu creation items
   const menuCreationList = [
@@ -29,8 +30,8 @@ const MenuNav = (props) => {
   // Create links for menu browsing items
   // const menuBrowsingList = useMemo(
   //   () =>
-  //     data.categories &&
-  //     data.categories.map((cat) => {
+  //     categories &&
+  //     categories.map((cat) => {
   //       // If category has children
   //       if (cat.children) {
   //         // If category's children has children
@@ -82,7 +83,7 @@ const MenuNav = (props) => {
   //         link: `/users/category/${convertToSlug(cat.label)}`,
   //       };
   //     }),
-  //   [data]
+  //   [categories]
   // );
 
   const itemStyle = {
@@ -150,7 +151,7 @@ const MenuNav = (props) => {
           >
             Browse Categories
           </ListSubheader>
-          {data.error ? (
+          {error ? (
             <Typography
               variant='body2'
               gutter
@@ -162,7 +163,7 @@ const MenuNav = (props) => {
               No data available
             </Typography>
           ) : (
-            data.categories.map((item, index) => (
+            categories.map((item, index) => (
               <MenuNavItem {...item} key={index} />
             ))
           )}
