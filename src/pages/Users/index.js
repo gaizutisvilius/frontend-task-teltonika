@@ -12,7 +12,7 @@ import UsersToolboxItems from '../../components/Users/UsersToolboxItems';
 import UsersList from '../../components/Users';
 
 const Users = () => {
-  const { data } = useSelector((state) => state);
+  const data = useSelector((state) => state.data);
 
   const currentUsers = data.isSearchActive ? data.foundUsers : data.users;
   const exportData = {

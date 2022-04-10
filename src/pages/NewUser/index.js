@@ -26,7 +26,7 @@ import Form from '../../components/Form';
 import SelectTree from '../../components/SelectTree';
 
 const NewUser = (props) => {
-  const { data } = useSelector((state) => state);
+  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   const [selectedCategory, setSelectedCategory] = useState(null);

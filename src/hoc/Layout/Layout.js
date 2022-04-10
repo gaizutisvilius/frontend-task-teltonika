@@ -24,7 +24,7 @@ const LayoutRoot = styled('div')(({ theme }) => ({
 const Layout = (props) => {
   const { children } = props;
 
-  const { alert } = useSelector((state) => state);
+  const alert = useSelector((state) => state.alert);
 
   const [menuOpen, setMenuOpen] = useState(true);
 

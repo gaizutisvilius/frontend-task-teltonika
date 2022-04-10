@@ -11,7 +11,7 @@ import MenuNavItem from './MenuNavItem';
 import { convertToSlug } from '../../shared/utils';
 
 const MenuNav = (props) => {
-  const { data } = useSelector((state) => state);
+  const data = useSelector((state) => state.data);
 
   // Set up menu creation items
   const menuCreationList = [
